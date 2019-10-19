@@ -1,7 +1,14 @@
 {
 	"auth": {
-		"cognito704b3e59": {
+		"recordstoreusers": {
 			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	},
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
 			"providerPlugin": "awscloudformation"
 		}
 	}

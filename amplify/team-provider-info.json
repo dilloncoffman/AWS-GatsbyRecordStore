@@ -1,0 +1,19 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "recordstore-dev-20191019191245-authRole",
+            "UnauthRoleArn": "arn:aws:iam::045312015851:role/recordstore-dev-20191019191245-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::045312015851:role/recordstore-dev-20191019191245-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "recordstore-dev-20191019191245-deployment",
+            "UnauthRoleName": "recordstore-dev-20191019191245-unauthRole",
+            "StackName": "recordstore-dev-20191019191245",
+            "StackId": "arn:aws:cloudformation:us-east-1:045312015851:stack/recordstore-dev-20191019191245/f5dde570-f2c5-11e9-9250-0e763951b664"
+        },
+        "categories": {
+            "auth": {
+                "recordstoreusers": {}
+            }
+        }
+    }
+}
