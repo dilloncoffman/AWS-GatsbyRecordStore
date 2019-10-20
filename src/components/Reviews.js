@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-const Home = () => {
+const Reviews = () => {
   const data = useStaticQuery(graphql`
     {
       recordstore {
@@ -13,6 +13,9 @@ const Home = () => {
             album {
               title
               albumart
+              artist {
+                name
+              }
             }
           }
         }
@@ -22,12 +25,15 @@ const Home = () => {
 
   return (
     <>
-      <h1>All Reviews</h1>
+      <h1>Reviews</h1>
       <div className="container">
         {data.recordstore.listReviews.items.map(review => (
           <div key={review.id} className="py-8">
             <h2>{review.author}</h2>
-            <a href="#">{review.album.title}</a>
+            <p>
+              <a href="#">{review.album.title}</a> by{' '}
+              <a href="#">{review.album.artist.name}</a>
+            </p>
             <hr />
             <p>{review.content}</p>
           </div>
@@ -36,4 +42,4 @@ const Home = () => {
     </>
   )
 }
-export default Home
+export default Reviews

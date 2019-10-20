@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { getCurrentUser } from '../utils/auth'
 
-const Home = () => {
+const Profile = () => {
   const user = getCurrentUser()
   console.log('user:', user)
   return (
@@ -11,9 +11,9 @@ const Home = () => {
       <p>Email: {user.email}</p>
       <p>Phone: {user.phone_number}</p>
       <p>Username: {user.username}</p>
-      <Link to="/app/home">Home</Link>
+      <Link to="/app/reviews">All Reviews</Link>
     </div>
   )
 }
 
-export default Home
+export default Profile
