@@ -1,10 +1,39 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
-const Home = () => <div>
-  <h1>Home</h1>
-	<p>You are now logged in! <Link to="/app/profile">View profile</Link></p>
-	<p>Now go build something great and deploy it using the <a href="https://console.amplify.aws">AWS Amplify Console</a></p>
-	</div>
+const Home = () => {
+  const data = useStaticQuery(graphql`
+    {
+      recordstore {
+        listReviews {
+          items {
+            id
+            author
+            content
+            album {
+              title
+              albumart
+            }
+          }
+        }
+      }
+    }
+  `)
 
+  return (
+    <>
+      <h1>All Reviews</h1>
+      <div className="container">
+        {data.recordstore.listReviews.items.map(review => (
+          <div key={review.id} className="py-8">
+            <h2>{review.author}</h2>
+            <a href="#">{review.album.title}</a>
+            <hr />
+            <p>{review.content}</p>
+          </div>
+        ))}
+      </div>
+    </>
+  )
+}
 export default Home
