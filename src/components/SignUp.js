@@ -104,7 +104,10 @@ class SignUp extends React.Component {
               value={this.state.authCode}
               style={styles.input}
             />
-            <div style={styles.button} onClick={this.confirmSignUp}>
+            <div
+              className="bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 my-2 px-4 rounded"
+              onClick={this.confirmSignUp}
+            >
               <span style={styles.buttonText}>Confirm Sign Up</span>
             </div>
           </div>

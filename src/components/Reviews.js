@@ -1,5 +1,6 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
+var slug = require('slug')
 
 const Reviews = () => {
   const data = useStaticQuery(graphql`
@@ -42,12 +43,16 @@ const Reviews = () => {
                   <div class="uppercase tracking-wide text-sm text-teal-200 font-bold">
                     {review.album.title}
                   </div>
-                  <a
+                  <Link
+                    to={`app/reviews/${slug(review.album.title, {
+                      lower: true,
+                      replacement: '-',
+                    })}`}
                     href="#"
                     class="block mt-1 text-lg leading-tight font-semibold text-gray-900 hover:underline"
                   >
                     {review.author}
-                  </a>
+                  </Link>
                   <p class="mt-2 text-gray-600">{review.content}</p>
                 </div>
               </div>
