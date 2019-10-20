@@ -7,13 +7,11 @@ import { logout, isLoggedIn } from '../utils/auth'
 import { Auth } from 'aws-amplify'
 
 const Header = ({ siteTitle }) => (
-  <div className="bg-blue-500 p-4">
+  <div className="bg-blue-500 p-4 font-mono">
     <nav className="flex items-center justify-between flex-wrap bg-blue-500 mx-16:lg">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
-        <h1 className="mb-0">
-          <Link to="/" style={styles.headerTitle}>
-            {siteTitle}
-          </Link>
+        <h1 className="mb-0 font-mono font-hairline text-sm">
+          <Link to="/">{siteTitle}</Link>
         </h1>
       </div>
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">

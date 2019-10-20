@@ -9,19 +9,25 @@ Amplify.configure(config)
 
 const IndexPage = () => (
   <Layout>
-    <h1>Hi people</h1>
-    <p>
-      Welcome to your new Gatsby site with multi-user authentication powered by{' '}
-      <a href="https://amplify.aws">AWS Amplify</a>
-    </p>
-    <p>
-      Create a new account: <Link to="/app/signup">Sign Up</Link>
-    </p>
-    <Link to="/app/login">Sign In</Link>
-    <br />
-    <Link to="/app/reviews">Reviews</Link>
-    <br />
-    <Link to="/app/profile">Your profile</Link>
+    <div className="container my-6 font-mono">
+      <h1 className="font-mono">Record Review</h1>
+      <p>
+        Welcome to Record Review where you can see how others are rating your
+        favorite/least-liked albums! Here's some reviews.. sign up to see them
+        all!
+      </p>
+      <div className="flex mb-4">
+        <div className="w-1/3 h-12 text-center text-3xl pt-3 hover:text-teal-300 hover:font-bold">
+          <Link to="/app/signup">Sign Up</Link>
+        </div>
+        <div className="w-1/3 h-12 text-center text-3xl pt-3 hover:text-teal-300 hover:font-bold">
+          <Link to="/app/login">Sign In</Link>
+        </div>
+        <div className="w-1/3 h-12 text-center text-3xl pt-3 hover:text-teal-300 hover:font-bold">
+          <Link to="/app/reviews">Newsletter</Link>
+        </div>
+      </div>
+    </div>
   </Layout>
 )
 

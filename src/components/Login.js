@@ -38,8 +38,8 @@ class Login extends React.Component {
   render() {
     if (isLoggedIn()) navigate('/app/profile')
     return (
-      <div>
-        <h1>Sign In</h1>
+      <div className="my-6 font-mono">
+        <h1 className="font-mono">Sign In</h1>
         {this.state.error && <Error errorMessage={this.state.error} />}
         <div style={styles.formContainer}>
           <input
@@ -57,11 +57,21 @@ class Login extends React.Component {
             type="password"
             style={styles.input}
           />
-          <div style={styles.button} onClick={this.login}>
+          <div
+            className="bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 my-2 px-4 rounded"
+            onClick={this.login}
+          >
             <span style={styles.buttonText}>Sign In</span>
           </div>
         </div>
-        <Link to="/app/signup">Sign Up</Link>
+        <div className="text-center">
+          <Link
+            to="/app/signup"
+            className="text-blue-500 hover:text-blue-200 hover:no-underline"
+          >
+            Sign Up
+          </Link>
+        </div>
         <br />
       </div>
     )
