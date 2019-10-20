@@ -28,7 +28,7 @@ const Profile = () => {
     <div className="container mt-6 font-mono">
       <h1 className="font-mono">Profile</h1>
       <p>Email: {user.email}</p>
-      <p>Phone: {user.phone_number}</p>
+      {user.phone_number ? <p>Phone: {user.phone_number}</p> : <></>}
       <p>Username: {user.username}</p>
       <div className="container">
         {data.recordstore.listReviews.items.map(review => (
