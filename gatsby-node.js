@@ -13,6 +13,20 @@ exports.onCreateNode = ({ node }) => {
   }
 }
 
+// You can delete this file if you're not using it
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage } = actions
+
+  // page.matchPath is a special key that's used for matching pages
+  // only on the client.
+  if (page.path.match(/^\/app/)) {
+    page.matchPath = `/app/*`
+
+    // Update the page.
+    createPage(page)
+  }
+}
+
 exports.createPages = async ({ actions, graphql }) => {
   const { data } = await graphql(`
     query {
@@ -48,18 +62,4 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     })
   })
-}
-
-// You can delete this file if you're not using it
-exports.onCreatePage = async ({ page, actions }) => {
-  const { createPage } = actions
-
-  // page.matchPath is a special key that's used for matching pages
-  // only on the client.
-  if (page.path.match(/^\/app/)) {
-    page.matchPath = `/app/*`
-
-    // Update the page.
-    createPage(page)
-  }
 }
