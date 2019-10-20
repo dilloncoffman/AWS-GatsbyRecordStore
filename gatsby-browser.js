@@ -8,13 +8,14 @@
 
 import Auth from '@aws-amplify/auth'
 import { setUser } from './src/utils/auth'
+import './src/styles/site.css'
 
 export const onRouteUpdate = (state, page, pages) => {
   Auth.currentAuthenticatedUser()
     .then(user => {
       const userInfo = {
         ...user.attributes,
-        username: user.username
+        username: user.username,
       }
       setUser(userInfo)
     })
