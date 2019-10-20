@@ -131,6 +131,21 @@
 				}
 			}
 		},
+		"apirecordstoreapi": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/recordstore-dev-20191019191245-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"Parameters": {
+					"CreateAPIKey": 1,
+					"AppSyncApiName": "recordstoreapi",
+					"DynamoDBBillingMode": "PAY_PER_REQUEST",
+					"DynamoDBEnableServerSideEncryption": "false",
+					"S3DeploymentBucket": "recordstore-dev-20191019191245-deployment",
+					"S3DeploymentRootKey": "amplify-appsync-files/69edad978c7be71701263b6ebb9906451de67ef1",
+					"env": "dev"
+				}
+			}
+		},
 		"UpdateRolesWithIDPFunction": {
 			"DependsOn": [
 				"AuthRole",

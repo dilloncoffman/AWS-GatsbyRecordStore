@@ -11,5 +11,23 @@
 			"service": "S3AndCloudFront",
 			"providerPlugin": "awscloudformation"
 		}
+	},
+	"api": {
+		"recordstoreapi": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "API_KEY",
+						"apiKeyConfig": {
+							"description": "recordstoreapikey",
+							"apiKeyExpirationDays": "60"
+						}
+					}
+				}
+			}
+		}
 	}
 }

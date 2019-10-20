@@ -1,0 +1,204 @@
+type Artist {
+  id: ID!
+  name: String!
+  albums(filter: ModelAlbumFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelAlbumConnection
+}
+
+type Album {
+  id: ID!
+  title: String!
+  albumart: String
+  artist: Artist
+  reviews(filter: ModelReviewFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelReviewConnection
+}
+
+type Review {
+  id: ID!
+  author: String!
+  content: String
+  album: Album
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelArtistConnection {
+  items: [Artist]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelArtistFilterInput {
+  id: ModelIDFilterInput
+  name: ModelStringFilterInput
+  and: [ModelArtistFilterInput]
+  or: [ModelArtistFilterInput]
+  not: ModelArtistFilterInput
+}
+
+type Query {
+  getArtist(id: ID!): Artist
+  listArtists(filter: ModelArtistFilterInput, limit: Int, nextToken: String): ModelArtistConnection
+  getAlbum(id: ID!): Album
+  listAlbums(filter: ModelAlbumFilterInput, limit: Int, nextToken: String): ModelAlbumConnection
+  getReview(id: ID!): Review
+  listReviews(filter: ModelReviewFilterInput, limit: Int, nextToken: String): ModelReviewConnection
+}
+
+input CreateArtistInput {
+  id: ID
+  name: String!
+}
+
+input UpdateArtistInput {
+  id: ID!
+  name: String
+}
+
+input DeleteArtistInput {
+  id: ID
+}
+
+type Mutation {
+  createArtist(input: CreateArtistInput!): Artist
+  updateArtist(input: UpdateArtistInput!): Artist
+  deleteArtist(input: DeleteArtistInput!): Artist
+  createAlbum(input: CreateAlbumInput!): Album
+  updateAlbum(input: UpdateAlbumInput!): Album
+  deleteAlbum(input: DeleteAlbumInput!): Album
+  createReview(input: CreateReviewInput!): Review
+  updateReview(input: UpdateReviewInput!): Review
+  deleteReview(input: DeleteReviewInput!): Review
+}
+
+type Subscription {
+  onCreateArtist: Artist @aws_subscribe(mutations: ["createArtist"])
+  onUpdateArtist: Artist @aws_subscribe(mutations: ["updateArtist"])
+  onDeleteArtist: Artist @aws_subscribe(mutations: ["deleteArtist"])
+  onCreateAlbum: Album @aws_subscribe(mutations: ["createAlbum"])
+  onUpdateAlbum: Album @aws_subscribe(mutations: ["updateAlbum"])
+  onDeleteAlbum: Album @aws_subscribe(mutations: ["deleteAlbum"])
+  onCreateReview: Review @aws_subscribe(mutations: ["createReview"])
+  onUpdateReview: Review @aws_subscribe(mutations: ["updateReview"])
+  onDeleteReview: Review @aws_subscribe(mutations: ["deleteReview"])
+}
+
+type ModelAlbumConnection {
+  items: [Album]
+  nextToken: String
+}
+
+input ModelAlbumFilterInput {
+  id: ModelIDFilterInput
+  title: ModelStringFilterInput
+  albumart: ModelStringFilterInput
+  and: [ModelAlbumFilterInput]
+  or: [ModelAlbumFilterInput]
+  not: ModelAlbumFilterInput
+}
+
+input CreateAlbumInput {
+  id: ID
+  title: String!
+  albumart: String
+  albumArtistId: ID
+}
+
+input UpdateAlbumInput {
+  id: ID!
+  title: String
+  albumart: String
+  albumArtistId: ID
+}
+
+input DeleteAlbumInput {
+  id: ID
+}
+
+type ModelReviewConnection {
+  items: [Review]
+  nextToken: String
+}
+
+input ModelReviewFilterInput {
+  id: ModelIDFilterInput
+  author: ModelStringFilterInput
+  content: ModelStringFilterInput
+  and: [ModelReviewFilterInput]
+  or: [ModelReviewFilterInput]
+  not: ModelReviewFilterInput
+}
+
+input CreateReviewInput {
+  id: ID
+  author: String!
+  content: String
+  reviewAlbumId: ID
+}
+
+input UpdateReviewInput {
+  id: ID!
+  author: String
+  content: String
+  reviewAlbumId: ID
+}
+
+input DeleteReviewInput {
+  id: ID
+}

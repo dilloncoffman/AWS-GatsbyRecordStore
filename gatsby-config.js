@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -30,5 +32,16 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: 'RecordStore',
+        fieldName: 'recordstore',
+        url: process.env.API_ENDPOINT,
+        headers: {
+          'x-api-key': process.env.API_KEY,
+        },
+      },
+    },
   ],
 }

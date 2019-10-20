@@ -1,0 +1,18 @@
+type Artist @model {
+  id: ID!
+  name: String!
+  albums: [Album] @connection(name: "ArtistAlbums")
+}
+type Album @model {
+  id: ID!
+  title: String!
+  albumart: String
+  artist: Artist @connection(name: "ArtistAlbums")
+  reviews: [Review] @connection(name: "AlbumReview")
+}
+type Review @model {
+  id: ID!
+  author: String!
+  content: String
+  album: Album @connection(name: "AlbumReview")
+}
