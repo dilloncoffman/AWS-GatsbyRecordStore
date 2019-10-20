@@ -35,7 +35,7 @@ const Reviews = () => {
                   <img
                     class="rounded-lg md:w-56"
                     src={review.album.albumart}
-                    alt="Woman paying for a purchase"
+                    alt={review.album.title}
                   />
                 </div>
                 <div class="mt-4 md:mt-0 md:ml-6">
